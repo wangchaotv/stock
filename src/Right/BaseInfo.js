@@ -128,7 +128,7 @@ const BaseInfo = (props) => {
           </Button>
           <Button
             type="link"
-            href={`https://wangchaotv.github.io/month-k/?code=${code}`}
+            href={`https://wangchaotv.github.io/month-k/?code=${code}&name=${name}`}
             target="_blank"
             rel="noreferrer"
           >
