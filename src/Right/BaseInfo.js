@@ -17,6 +17,7 @@ const BaseInfo = (props) => {
     market,
     exchange,
     list_date,
+    setup_date,
     act_name,
     act_ent_type,
     province,
@@ -36,6 +37,11 @@ const BaseInfo = (props) => {
           {name}&nbsp;{code}
         </span>
       ),
+    },
+    {
+      key: 'setup_date',
+      label: '成立日期',
+      children: <span>{dayjs(setup_date).format('YYYY年M月DD日')}</span>,
     },
     {
       key: 'list_date',
@@ -72,7 +78,6 @@ const BaseInfo = (props) => {
         </span>
       ),
     },
-
     {
       key: 'industry',
       label: '行业',
@@ -81,7 +86,7 @@ const BaseInfo = (props) => {
           {l1_name}-{l2_name}-{l3_name}
         </span>
       ),
-      span: 3,
+      span: 2,
     },
     {
       key: 'act_ent_type',
