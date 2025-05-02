@@ -40,7 +40,7 @@ const BaseInfo = (props) => {
     },
     {
       key: 'setup_date',
-      label: '成立日期',
+      label: '注册日期',
       children: <span>{dayjs(setup_date).format('YYYY年M月DD日')}</span>,
     },
     {
