@@ -31,35 +31,16 @@ const BaseInfo = (props) => {
     {
       key: 'name',
       label: '名称',
-      children: <span>{name}</span>,
-    },
-    {
-      key: 'website',
-      label: '官网',
-      children: (
-        <a href={`//${website}`} target="_blank" rel="noreferrer">
-          官方网站
-        </a>
-      ),
-    },
-    {
-      key: 'manager',
-      label: '总经理',
-      children: <span>{manager}</span>,
-    },
-    {
-      key: 'employees',
-      label: '员工人数',
-      children: <span>{employees}</span>,
-    },
-    {
-      key: 'area',
-      label: '地域',
       children: (
         <span>
-          {province}-{city}
+          {name}&nbsp;{code}
         </span>
       ),
+    },
+    {
+      key: 'list_date',
+      label: '上市日期',
+      children: <span>{dayjs(list_date).format('YYYY年M月DD日')}</span>,
     },
     {
       key: 'exchange',
@@ -71,10 +52,27 @@ const BaseInfo = (props) => {
       ),
     },
     {
-      key: 'list_date',
-      label: '上市日期',
-      children: <span>{dayjs(list_date).format('YYYY年M月DD日')}</span>,
+      key: 'manager',
+      label: '总经理',
+      children: <span>{manager}</span>,
     },
+    {
+      key: 'employees',
+      label: '员工人数',
+      children: (
+        <span>{employees >= 10000 ? `${employees / 10000}万` : employees}</span>
+      ),
+    },
+    {
+      key: 'area',
+      label: '地域',
+      children: (
+        <span>
+          {province}-{city}
+        </span>
+      ),
+    },
+
     {
       key: 'industry',
       label: '行业',
@@ -83,17 +81,17 @@ const BaseInfo = (props) => {
           {l1_name}-{l2_name}-{l3_name}
         </span>
       ),
-      span: 2,
+      span: 3,
     },
     {
       key: 'act_ent_type',
       label: <div style={{ minWidth: '98px' }}>实控人企业性质</div>,
-      children: <span>{act_ent_type}</span>,
+      children: <span>{act_ent_type || '无'}</span>,
     },
     {
       key: 'act_name',
       label: '实控人名称',
-      children: <span>{act_name}</span>,
+      children: <span>{act_name || '无实际控制人'}</span>,
       span: 2,
     },
     {
@@ -108,6 +106,14 @@ const BaseInfo = (props) => {
       span: 3,
       children: (
         <div>
+          <Button
+            type="link"
+            href={`//${website}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            官方网站
+          </Button>
           <Button
             type="link"
             onClick={() => {
