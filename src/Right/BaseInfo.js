@@ -126,6 +126,14 @@ const BaseInfo = (props) => {
           >
             东财
           </Button>
+          <Button
+            type="link"
+            href={`https://wangchaotv.github.io/month-k/?code=${code}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            KLine
+          </Button>
         </div>
       ),
     },
