@@ -139,6 +139,24 @@ const BaseInfo = (props) => {
           >
             KLine
           </Button>
+          <Button
+            type="link"
+            href={`https://www.cninfo.com.cn/new/fulltextSearch?notautosubmit=&keyWord=${name}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            巨潮
+          </Button>
+          <Button
+            type="link"
+            href={`https://data.eastmoney.com/report/singlestock.jshtml?stockcode=${
+              code.split('.')[0]
+            }`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            研报
+          </Button>
         </div>
       ),
     },
