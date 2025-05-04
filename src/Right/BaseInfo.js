@@ -150,7 +150,7 @@ const BaseInfo = (props) => {
           <Button
             type="link"
             href={`https://data.eastmoney.com/report/singlestock.jshtml?stockcode=${
-              code.split('.')[0]
+              code?.split('.')[0]
             }`}
             target="_blank"
             rel="noreferrer"
