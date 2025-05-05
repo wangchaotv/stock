@@ -5,7 +5,7 @@ import ShowNumber from '../components/ShowNumber';
 import ShowPercentage from '../components/ShowPercentage';
 
 const TR = (props) => {
-  const { name, data, valueKey, fenmu } = props;
+  const { name, data, valueKey, fenmu = 'total_assets' } = props;
   return (
     <tr>
       <td>{name}</td>
@@ -29,7 +29,7 @@ const TR = (props) => {
 };
 
 const Balancesheet = (props) => {
-  const [showCount, setShowCount] = useState(10);
+  const [showCount, setShowCount] = useState(8);
   const balancesheet = props.balancesheet || {};
   console.log(balancesheet);
 
@@ -57,54 +57,31 @@ const Balancesheet = (props) => {
           </tr>
         </thead>
         <tbody>
-          <TR
-            name="资产总计"
-            data={data}
-            valueKey="total_assets"
-            fenmu="total_assets"
-          />
-          <TR
-            name="流动资产合计"
-            data={data}
-            valueKey="total_cur_assets"
-            fenmu="total_assets"
-          />
-          <TR
-            name="非流动资产合计"
-            data={data}
-            valueKey="total_nca"
-            fenmu="total_assets"
-          />
+          <TR name="资产总计" data={data} valueKey="total_assets" />
+          <TR name="流动资产合计" data={data} valueKey="total_cur_assets" />
+          <TR name="非流动资产合计" data={data} valueKey="total_nca" />
           <tr>
-            <td colSpan={showCount + 1}>&nbsp;</td>
+            <td colSpan={showCount + 2}>&nbsp;</td>
           </tr>
-          <TR
-            name="负债合计"
-            data={data}
-            valueKey="total_liab"
-            fenmu="total_assets"
-          />
-          <TR
-            name="流动负债合计"
-            data={data}
-            valueKey="total_cur_liab"
-            fenmu="total_assets"
-          />
-          <TR
-            name="非流动负债合计"
-            data={data}
-            valueKey="total_ncl"
-            fenmu="total_assets"
-          />
+          <TR name="负债合计" data={data} valueKey="total_liab" />
+          <TR name="流动负债合计" data={data} valueKey="total_cur_liab" />
+          <TR name="非流动负债合计" data={data} valueKey="total_ncl" />
           <tr>
-            <td colSpan={showCount + 1}>&nbsp;</td>
+            <td colSpan={showCount + 2}>&nbsp;</td>
           </tr>
           <TR
             name="股东权益合计"
             data={data}
             valueKey="total_hldr_eqy_inc_min_int"
-            fenmu="total_assets"
           />
+          <tr>
+            <td colSpan={showCount + 2}>&nbsp;</td>
+          </tr>
+          <TR name="货币资金" data={data} valueKey="money_cap" />
+          <tr>
+            <td colSpan={showCount + 2}>&nbsp;</td>
+          </tr>
+          <TR name="固定资产" data={data} valueKey="fix_assets" />
         </tbody>
       </table>
     </div>
