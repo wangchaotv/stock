@@ -17,3 +17,14 @@
   height: 100vh;
   padding: 0 10px;
 }
+
+.my-table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+.my-table td,
+.my-table th {
+  border: 1px solid #ddd;
+  padding: 5px 8px;
+}
