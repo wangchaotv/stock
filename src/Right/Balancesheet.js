@@ -2,9 +2,10 @@ import { Divider } from 'antd';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import ShowNumber from '../components/ShowNumber';
+import ShowPercentage from '../components/ShowPercentage';
 
 const TR = (props) => {
-  const { name, data, valueKey } = props;
+  const { name, data, valueKey, fenmu } = props;
   return (
     <tr>
       <td>{name}</td>
@@ -15,6 +16,14 @@ const TR = (props) => {
           </td>
         );
       })}
+      <td>
+        {fenmu && (
+          <ShowPercentage
+            fenzi={data?.at(-1)?.[valueKey]}
+            fenmu={data?.at(-1)?.[fenmu]}
+          />
+        )}
+      </td>
     </tr>
   );
 };
@@ -35,9 +44,12 @@ const Balancesheet = (props) => {
         <thead>
           <tr>
             <th>科目</th>
-            {data.map((item) => {
+            {data.map((item, index) => {
               return (
-                <th key={item.end_date}>
+                <th
+                  key={item.end_date}
+                  colSpan={index === data.length - 1 ? 2 : 1}
+                >
                   {dayjs(item.end_date).format('YYYY')}
                 </th>
               );
@@ -45,22 +57,53 @@ const Balancesheet = (props) => {
           </tr>
         </thead>
         <tbody>
-          <TR name="资产总计" data={data} valueKey="total_assets" />
-          <TR name="流动资产合计" data={data} valueKey="total_cur_assets" />
-          <TR name="非流动资产合计" data={data} valueKey="total_nca" />
+          <TR
+            name="资产总计"
+            data={data}
+            valueKey="total_assets"
+            fenmu="total_assets"
+          />
+          <TR
+            name="流动资产合计"
+            data={data}
+            valueKey="total_cur_assets"
+            fenmu="total_assets"
+          />
+          <TR
+            name="非流动资产合计"
+            data={data}
+            valueKey="total_nca"
+            fenmu="total_assets"
+          />
           <tr>
-            <td colspan={showCount + 1}>&nbsp;</td>
+            <td colSpan={showCount + 1}>&nbsp;</td>
           </tr>
-          <TR name="负债合计" data={data} valueKey="total_liab" />
-          <TR name="流动负债合计" data={data} valueKey="total_cur_liab" />
-          <TR name="非流动负债合计" data={data} valueKey="total_ncl" />
+          <TR
+            name="负债合计"
+            data={data}
+            valueKey="total_liab"
+            fenmu="total_assets"
+          />
+          <TR
+            name="流动负债合计"
+            data={data}
+            valueKey="total_cur_liab"
+            fenmu="total_assets"
+          />
+          <TR
+            name="非流动负债合计"
+            data={data}
+            valueKey="total_ncl"
+            fenmu="total_assets"
+          />
           <tr>
-            <td colspan={showCount + 1}>&nbsp;</td>
+            <td colSpan={showCount + 1}>&nbsp;</td>
           </tr>
           <TR
             name="股东权益合计"
             data={data}
             valueKey="total_hldr_eqy_inc_min_int"
+            fenmu="total_assets"
           />
         </tbody>
       </table>
