@@ -19,12 +19,29 @@
 }
 
 .my-table {
-  border: 1px solid #ddd;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.88);
+  border: 1px solid #f0f0f0;
   border-collapse: collapse;
 }
 
-.my-table td,
+.my-table tr:hover {
+  background-color: #f0f0f0;
+}
+
 .my-table th {
-  border: 1px solid #ddd;
-  padding: 5px 8px;
+  border: 1px solid #f0f0f0;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.my-table td {
+  border: 1px solid #f0f0f0;
+  padding: 8px;
+}
+
+.td-title {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.88);
+  text-align: center;
 }
