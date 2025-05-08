@@ -31,13 +31,13 @@
 
 .my-table th {
   border: 1px solid #f0f0f0;
-  padding: 8px;
+  padding: 5px 8px;
   font-weight: 600;
 }
 
 .my-table td {
   border: 1px solid #f0f0f0;
-  padding: 8px;
+  padding: 5px 8px;
 }
 
 .td-title {
